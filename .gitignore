@@ -1,0 +1,7 @@
+.skillkit/personal/
+node_modules/
+.claude/.last-test-run
+.claude/settings.local.json
+
+skillkit/docs/archive/
+skillkit/docs/design/

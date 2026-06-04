@@ -1,0 +1,15 @@
+{
+  "name": "skillkit",
+  "version": "1.0.0",
+  "description": "Kit de demarrage TDD/DDD pour projets backend",
+  "private": true,
+  "bin": {
+    "skillkit": "cli/bin/skillkit.js"
+  },
+  "scripts": {
+    "test": "node --test cli/test/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
