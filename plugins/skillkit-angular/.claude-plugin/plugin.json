@@ -1,0 +1,8 @@
+{
+  "name": "skillkit-angular",
+  "description": "Frontend Angular on top of AIDD: modern Angular conventions (signals, standalone, OnPush), a pedagogical review and a pattern explainer, a unit-test skill (Vitest by default), and frontend implementer / reviewer agents for TDD.",
+  "author": {
+    "name": "Loïc Leplomb"
+  },
+  "dependencies": ["aidd-dev@aidd-framework", "skillkit-tdd"]
+}
