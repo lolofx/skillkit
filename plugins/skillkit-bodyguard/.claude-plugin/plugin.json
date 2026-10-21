@@ -1,0 +1,7 @@
+{
+  "name": "skillkit-bodyguard",
+  "description": "Guard rail mod: asks for confirmation before rm -f/-r (outside temp), git push --force, git reset --hard and DROP TABLE; toast on each block, counter in the status line.",
+  "author": {
+    "name": "Loïc Leplomb"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "skillkit-tools",
+  "description": "Claude Code tooling: audit which plugins are active per project (plugin-audit) and add elements to the skillkit marketplace (marketplace-add).",
+  "author": {
+    "name": "Loïc Leplomb"
+  }
+}

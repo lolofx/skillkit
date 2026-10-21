@@ -1,0 +1,8 @@
+{
+  "name": "skillkit-ctx",
+  "description": "Context weight mod: /ctx pane showing what weighs on the context (skills by plugin, MCP by server, memory, categories) from startup, and what each turn adds.",
+  "author": {
+    "name": "Loïc Leplomb"
+  },
+  "types": "./types/index.d.ts"
+}

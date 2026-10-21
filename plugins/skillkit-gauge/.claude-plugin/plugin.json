@@ -1,0 +1,8 @@
+{
+  "name": "skillkit-gauge",
+  "description": "Gauge mod: one line above the prompt (context, 5-hour limit with time left, week) colored by urgency, plus a /gauge pane.",
+  "author": {
+    "name": "Loïc Leplomb"
+  },
+  "types": "./types/index.d.ts"
+}
