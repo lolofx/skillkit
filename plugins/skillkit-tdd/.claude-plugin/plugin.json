@@ -1,0 +1,8 @@
+{
+  "name": "skillkit-tdd",
+  "description": "Strict TDD discipline on top of AIDD: a RED/GREEN/REFACTOR skill, a test-writer agent that never touches production code, and a commit gate that refuses a commit without a recent green test run.",
+  "author": {
+    "name": "Loïc Leplomb"
+  },
+  "dependencies": ["aidd-dev@aidd-framework"]
+}
