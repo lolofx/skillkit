@@ -1,0 +1,15 @@
+{
+  "name": "skillkit",
+  "description": "Personal, open-source Claude Code plugins for .NET and Angular development, built on the AIDD framework.",
+  "owner": { "name": "Loïc Leplomb" },
+  "allowCrossMarketplaceDependenciesOn": ["aidd-framework"],
+  "plugins": [
+    { "name": "skillkit-tdd", "source": "./plugins/skillkit-tdd", "description": "Strict TDD on top of AIDD: RED/GREEN/REFACTOR skill, test-writer agent, and a commit gate that requires a recent green test run" },
+    { "name": "skillkit-dotnet", "source": "./plugins/skillkit-dotnet", "description": "Backend .NET on top of AIDD: hexagonal + graded DDD conventions, architecture / C# reviews, unit-test skill, backend implementer and reviewer agents" },
+    { "name": "skillkit-angular", "source": "./plugins/skillkit-angular", "description": "Frontend Angular on top of AIDD: modern conventions, pedagogical review and explainer, unit-test skill, frontend implementer and reviewer agents" },
+    { "name": "skillkit-bodyguard", "source": "./plugins/skillkit-bodyguard", "description": "Guard rail mod: asks for confirmation before rm -f/-r, git push --force, git reset --hard and DROP TABLE" },
+    { "name": "skillkit-gauge", "source": "./plugins/skillkit-gauge", "description": "Gauge mod: context, 5-hour limit and week above the prompt, colored by urgency, plus a /gauge pane" },
+    { "name": "skillkit-ctx", "source": "./plugins/skillkit-ctx", "description": "Context weight mod: /ctx pane showing what weighs on the context and what each turn adds" },
+    { "name": "skillkit-tools", "source": "./plugins/skillkit-tools", "description": "Claude Code tooling: plugin-audit and marketplace-add" }
+  ]
+}

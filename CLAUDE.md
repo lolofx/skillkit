@@ -1,50 +1,41 @@
 # CLAUDE.md
 
-@AGENTS.md
+This repo is a **Claude Code plugin marketplace** (`skillkit`) built on the AIDD framework. It is not an app and has no build.
 
----
+## Layout
 
-Ce qui suit est **spécifique à Claude Code**. Le contrat de session est dans `AGENTS.md` (inclus ci-dessus).
+```
+.claude-plugin/marketplace.json     root manifest (plugin list, allowCrossMarketplaceDependenciesOn)
+plugins/<plugin>/
+  .claude-plugin/plugin.json        name, description, author, dependencies
+  skills/<skill>/SKILL.md           + actions/ (numbered steps), references/ (on demand), assets/
+  agents/ commands/ hooks/          optional
+ROADMAP.md                          remaining work
+```
 
-## Commands
+## Conventions (all mandatory)
 
-Chaque command est un wrapper mince qui charge le skill canonique correspondant :
+- **No `version`** in `plugin.json` or `marketplace.json`: each commit is a version. `claude plugin validate .` prints "No version specified"; that is intended.
+- **English** everywhere: skills, descriptions, UI strings of mods.
+- **AIDD skill style**: `SKILL.md` as entry point, `actions/` for numbered steps, `references/` for material loaded on demand. Description reads "Use when... Not for...".
+- **Autonomous and generic**: plugins depend on AIDD (`aidd-dev@aidd-framework`) and on each other, never on an employer's content or on a private path. Project facts (stack, conventions, domain profile) come from the project memory (`aidd_docs/memory/`), not from files shipped here.
+- **Stack plugins do not duplicate AIDD** workflow skills (plan, review, commit, debug...). Check `aidd-framework` before adding a skill.
+- Everything a skill or mod uses lives **inside its plugin folder**: no outgoing symlinks, no absolute paths. Hook commands use `${CLAUDE_PLUGIN_ROOT}`.
+- Plugin names are prefixed `skillkit-`.
+- Third-party content (articles, books, other people's skills) is not copied into this repo.
 
-| Command | Skill chargé |
-|---|---|
-| `/brainstorm <sujet>` | `skillkit/skills/workflow/brainstorm/` |
-| `/spec <feature>` | `skillkit/skills/workflow/spec/` |
-| `/plan <feature>` | `skillkit/skills/workflow/plan/` |
-| `/tdd <étape>` | `skillkit/skills/workflow/tdd/` |
-| `/ng-review <fichier>` | `skillkit/skills/frontend/ng-review/` |
-| `/ng-explain <pattern>` | `skillkit/skills/frontend/ng-explain/` |
-| `/ddd-review <module>` | `skillkit/skills/backend/ddd-review/` |
-| `/file-review <fichier>` | `skillkit/skills/backend/file-review/` |
-| `/csharp-quality <fichier>` | `skillkit/skills/backend/csharp-quality/` |
-| `/review [cible]` | `skillkit/skills/delivery/review/` |
-| `/fix-issue <issue>` | `skillkit/skills/delivery/fix-issue/` |
-| `/refactor <cible>` | `skillkit/skills/delivery/refactor/` |
-| `/generate-tests <cible>` | `skillkit/skills/delivery/generate-tests/` |
-| `/commit` | `skillkit/skills/delivery/commit/` — gate : tests verts + doc à jour obligatoires |
+## Checks before committing
 
-## Agents (`.claude/agents/`)
+```
+claude plugin validate .
+```
 
-| Agent | Rôle | Garde-fou |
-|---|---|---|
-| `test-writer` | Écrit les tests RED depuis une étape du plan | Ne touche JAMAIS au code de prod |
-| `backend-implementer` | Fait passer au GREEN puis refactore | Ne touche JAMAIS aux tests |
-| `backend-reviewer` | Review indépendante post-implémentation | Lecture seule — rapporte, ne corrige pas |
+Hooks have shell variants (`.sh` and `.ps1`); keep `.ps1` files ASCII-only. Mod code is TypeScript/TSX with tests next to it; run them with the Claude Code mod test runner when you change one.
 
-Pour un cycle TDD complet : `test-writer` (RED) → `backend-implementer` (GREEN + refactor)
-→ `backend-reviewer`. La séparation test-writer / implementer est volontaire :
-un agent ne peut pas adapter un test à son code.
+## Mods
 
-## Hooks actifs (`.claude/hooks/` + `settings.json`)
+A mod is developed in a scratch dir, then copied here. Never keep the dev copy and the installed plugin enabled together: the guard / display would run twice.
 
-| Hook | Effet |
-|---|---|
-| `guard-bash` | Bloque les commandes destructrices (`rm -rf`, `git push --force`, `drop database`…) |
-| `guard-commit` | Bloque `git commit` si aucune suite de tests verte récente (dotnet/node/ng/npm/vitest) |
-| `track-tests` | Trace chaque exécution de tests — dotnet, node, ng, npm test, vitest (marqueur lu par guard-commit) |
+## Adding something
 
-Ne pas contourner un hook qui bloque : corriger la cause (lancer les tests, retirer la commande dangereuse).
+Use the `marketplace-add` skill (plugin `skillkit-tools`): it recommends the right element type, proposes a plan, then creates, declares and validates it.
