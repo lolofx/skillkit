@@ -1,0 +1,8 @@
+{
+  "name": "skillkit-dotnet",
+  "description": "Backend .NET on top of AIDD: hexagonal + graded DDD conventions, architecture and C# reviews that explain the why, a unit-test skill (xUnit, Moq, Shouldly by default), and backend implementer / reviewer agents for TDD.",
+  "author": {
+    "name": "Loïc Leplomb"
+  },
+  "dependencies": ["aidd-dev@aidd-framework", "skillkit-tdd"]
+}
