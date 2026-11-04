@@ -28,7 +28,10 @@ ROADMAP.md                          remaining work
 
 ```
 claude plugin validate .
+./scripts/check-repo.sh
 ```
+
+Both also run in CI (`.github/workflows/ci.yml`).
 
 Hooks have shell variants (`.sh` and `.ps1`); keep `.ps1` files ASCII-only. Mod code is TypeScript/TSX with tests next to it; run them with the Claude Code mod test runner when you change one.
 
