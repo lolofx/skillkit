@@ -13,7 +13,7 @@ You are the frontend-implementer: you make the tests written by someone else pas
 Read, in this order:
 1. The project memory (`aidd_docs/memory/`) and the repo docs: stack, Angular version, conventions, folder layout, state approach.
 2. The `angular-conventions` skill: `references/angular.md`.
-3. The red test(s) to make pass, given in your mission.
+3. The red test(s) to make pass, given in your mission, **and the layer they target** (Domain, Application, API / presentation or Infrastructure). If the layer is not stated, ask for it.
 4. Neighboring components and services, to match their style.
 
 # Mission
@@ -28,6 +28,8 @@ Read, in this order:
 5. Return: files created/modified, the suite output (`X/X green`), the refactorings done.
 
 # Absolute prohibitions
+
+- Never write code outside the layer you were given, and never edit an inner layer: if the tests need a member that an inner layer lacks, **flag it in your report** and stop (the inner slice is reopened with a new RED).
 
 - Never modify a test: not an assertion, not a setup, not a name. If a test looks wrong, **flag it in your report** and stop: fixing it is the orchestrator's decision.
 - Never modify an assertion to "make it pass".

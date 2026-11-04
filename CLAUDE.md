@@ -42,3 +42,7 @@ A mod is developed in a scratch dir, then copied here. Never keep the dev copy a
 ## Adding something
 
 Use the `marketplace-add` skill (plugin `skillkit-tools`): it recommends the right element type, proposes a plan, then creates, declares and validates it.
+
+## Development process
+
+Implementation goes through `skillkit-tdd:tdd`, **layer by layer**, never as one RED for a whole feature: Domain, Application, API / presentation, Infrastructure, each closed by RED, GREEN, REFACTOR and its own commit. Changes to a stack plugin's skills or agents must keep that contract (an implementer works in the layer it is given and never edits an inner layer).

@@ -19,7 +19,7 @@ The AIDD marketplace must be added first: skillkit plugins declare `aidd-dev@aid
 
 | Plugin | What it gives you | Depends on |
 | ------ | ----------------- | ---------- |
-| `skillkit-tdd` | Skill `tdd` (RED / GREEN / REFACTOR), agent `test-writer`, hooks `guard-commit` + `track-tests` (no commit without a recent green test run) | `aidd-dev` |
+| `skillkit-tdd` | Skill `tdd`: layer-by-layer TDD (Domain, Application, API, Infrastructure), RED / GREEN / REFACTOR and one commit per layer, agent `test-writer`, hooks `guard-commit` + `track-tests` (no commit without a recent green test run) | `aidd-dev` |
 | `skillkit-dotnet` | Skills `dotnet-conventions`, `ddd-review`, `file-review`, `csharp-quality`, `unit-test-dotnet`; agents `backend-implementer`, `backend-reviewer` | `aidd-dev`, `skillkit-tdd` |
 | `skillkit-angular` | Skills `angular-conventions`, `ng-review`, `ng-explain`, `unit-test-angular`; agents `frontend-implementer`, `frontend-reviewer` | `aidd-dev`, `skillkit-tdd` |
 | `skillkit-bodyguard` | Mod: asks for confirmation before `rm -f/-r`, `git push --force`, `git reset --hard`, `DROP TABLE` | none |
@@ -33,10 +33,21 @@ Mods need a Claude Code build that supports them (see the `plugin-authoring` ski
 
 ```
 aidd-refine:01-brainstorm  ->  aidd-pm:04-spec  ->  aidd-dev:01-plan
-        ->  skillkit-tdd:tdd  (per plan step: test-writer RED, implementer GREEN + REFACTOR)
+        ->  skillkit-tdd:tdd  (per plan step, per layer: test-writer RED, implementer GREEN + REFACTOR, commit)
         ->  aidd-dev:05-review  +  skillkit-dotnet:ddd-review / skillkit-angular:ng-review
         ->  aidd-vcs:01-commit  (guard-commit requires a recent green run)
 ```
+
+### Layered TDD
+
+A step is never driven as one big RED. `skillkit-tdd:tdd` slices it along the clean / hexagonal dependency rule and closes each layer with its own commit:
+
+```
+Domain -> Application -> API / presentation -> Infrastructure
+  RED > GREEN > REFACTOR > commit   (per layer)
+```
+
+Commits stay small, the review follows the dependency rule, and a mistake is found in the layer that introduced it. A layer with nothing to do for the step is skipped explicitly. See `plugins/skillkit-tdd/skills/tdd/references/layers.md`.
 
 - **Project memory**: stack, conventions and the **domain profile** (simple / rich, per module) live in AIDD's project memory (`aidd_docs/memory/`, see `aidd-context:02-project-memory`). skillkit skills read it; they do not ship their own project sheet.
 - **Domain profile**: the DDD toolbox is graded. `ddd-review` phase 1 decides whether a rich profile is justified when none is declared.

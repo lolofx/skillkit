@@ -5,6 +5,7 @@ Before **any** commit, in this order:
 1. **Tests run and green**: the full suite, at the moment of the commit, not "they passed earlier".
 2. **Documentation up to date**: the plan, its status tracking, and any doc impacted by the change.
 3. **Conventions respected**: a quick check against the project memory and the stack guidance.
+4. **One layer per commit** when committing from the `tdd` skill: the diff touches the current layer only (Domain, Application, API / presentation or Infrastructure). A mixed diff is split before committing.
 
 If one is missing, no commit: fix first.
 
@@ -17,3 +18,4 @@ The `guard-commit` hook of this plugin denies a `git commit` Bash command when n
 - A test run is only recognised when its output has a pass/fail summary; with an output filter that hides the summary (for example a compact wrapper), the run is recorded as FAIL. Run the plain command before committing.
 - A hook must never be bypassed: run the tests instead.
 - Requires `jq` for the `.sh` variants (Linux, macOS, WSL); the `.ps1` variants need nothing.
+- Rules 3 and 4 are not enforced by the hook: they are the responsibility of the `tdd` skill and of the review.

@@ -4,7 +4,7 @@
   "owner": { "name": "Loïc Leplomb" },
   "allowCrossMarketplaceDependenciesOn": ["aidd-framework"],
   "plugins": [
-    { "name": "skillkit-tdd", "source": "./plugins/skillkit-tdd", "description": "Strict TDD on top of AIDD: RED/GREEN/REFACTOR skill, test-writer agent, and a commit gate that requires a recent green test run" },
+    { "name": "skillkit-tdd", "source": "./plugins/skillkit-tdd", "description": "Strict layer-by-layer TDD on top of AIDD (Domain, Application, API, Infrastructure, one commit per layer): RED/GREEN/REFACTOR skill, test-writer agent, and a commit gate that requires a recent green test run" },
     { "name": "skillkit-dotnet", "source": "./plugins/skillkit-dotnet", "description": "Backend .NET on top of AIDD: hexagonal + graded DDD conventions, architecture / C# reviews, unit-test skill, backend implementer and reviewer agents" },
     { "name": "skillkit-angular", "source": "./plugins/skillkit-angular", "description": "Frontend Angular on top of AIDD: modern conventions, pedagogical review and explainer, unit-test skill, frontend implementer and reviewer agents" },
     { "name": "skillkit-bodyguard", "source": "./plugins/skillkit-bodyguard", "description": "Guard rail mod: asks for confirmation before rm -f/-r, git push --force, git reset --hard and DROP TABLE" },
