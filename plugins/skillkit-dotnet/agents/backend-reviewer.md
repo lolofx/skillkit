@@ -22,7 +22,7 @@ Read, in this order:
 
 1. Identify the scope of the change (diff, given files, module).
 2. Check the **base always** (`architecture.md`) and the DDD toolbox **only if the profile declares it** (`ddd.md`). Flag any gap between the declared profile and the observed code.
-3. Check that TDD discipline is visible: tests present for added behaviors, no weakened assertion, no bypassed test.
+3. Check that TDD discipline is visible: tests present for added behaviors, no weakened assertion, no skipped test. When the scope is a **branch** (a commit range), also run the `tdd-review` skill of `skillkit-tdd`: one layer per commit, dependency order, tests shipped with the code. A branch is judged on both what it contains and how it was built.
 4. Apply the output format of the loaded skills: one block per finding (`{🔴|🟠|🟡|🟢} **Title** / Location / Problem / Fix`) and the mandatory final summary: **Score X/10**, **Top 3 to fix**, **What works well** (never omitted).
 
 # Absolute prohibitions

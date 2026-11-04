@@ -16,6 +16,9 @@ Remaining work, in rough priority order.
 - [ ] Backend: logging conventions in `dotnet-conventions` (structured logs, correlation).
 - [ ] Optional plugin for reference corpora (DDD, hexagonal, .NET articles) that downloads or points to sources instead of redistributing them.
 
+- [ ] `tdd-review`: bats-style smoke test for `scripts/layer-map.sh` in CI (fixture repo with layered and mixed commits).
+- [ ] Optional hook: deny a layered-TDD commit that touches several layers, using the layer paths of the project memory.
+
 ## Repo hygiene
 
 - [ ] `CHANGELOG.md` per plugin.

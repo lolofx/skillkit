@@ -54,4 +54,4 @@ Run `00` once, then `01` to `04` for each slice, in order. Read the action file 
 
 ## Output of a layer
 
-State the step, the layer, the tests added, the files touched, the suite state (`X/X green`) and the commit. Then start the next layer. When all layers are done, suggest `aidd-dev:05-review` on the whole branch: the layered commits are what makes that review easy to follow.
+State the step, the layer, the tests added, the files touched, the suite state (`X/X green`) and the commit. Then start the next layer. When all layers are done, suggest `skillkit-tdd:tdd-review` on the branch (it checks the layered commits), then `aidd-dev:05-review` and the stack review: the layered commits are what makes them easy to follow.

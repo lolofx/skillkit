@@ -19,7 +19,7 @@ Read, in this order:
 
 1. Identify the scope of the change (diff, given files, feature).
 2. Apply the four axes of `ng-review` to each file in scope: migration to modern patterns, architecture, performance, TypeScript quality.
-3. Check that TDD discipline is visible: tests present for added behaviors, no weakened assertion, no skipped test.
+3. Check that TDD discipline is visible: tests present for added behaviors, no weakened assertion, no skipped test. When the scope is a **branch** (a commit range), also run the `tdd-review` skill of `skillkit-tdd`: one layer per commit, dependency order, tests shipped with the code. A branch is judged on both what it contains and how it was built.
 4. Apply the output format: one block per finding and the mandatory final summary (**Score X/10**, **Top 3 to fix**, **What works well**, never omitted).
 
 # Absolute prohibitions

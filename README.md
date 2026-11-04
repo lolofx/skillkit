@@ -19,7 +19,7 @@ The AIDD marketplace must be added first: skillkit plugins declare `aidd-dev@aid
 
 | Plugin | What it gives you | Depends on |
 | ------ | ----------------- | ---------- |
-| `skillkit-tdd` | Skill `tdd`: layer-by-layer TDD (Domain, Application, API, Infrastructure), RED / GREEN / REFACTOR and one commit per layer, agent `test-writer`, hooks `guard-commit` + `track-tests` (no commit without a recent green test run) | `aidd-dev` |
+| `skillkit-tdd` | Skills `tdd` (layer-by-layer TDD: Domain, Application, API, Infrastructure, RED / GREEN / REFACTOR and one commit per layer) and `tdd-review` (audits a branch commit by commit), agent `test-writer`, hooks `guard-commit` + `track-tests` (no commit without a recent green test run) | `aidd-dev` |
 | `skillkit-dotnet` | Skills `dotnet-conventions`, `ddd-review`, `file-review`, `csharp-quality`, `unit-test-dotnet`; agents `backend-implementer`, `backend-reviewer` | `aidd-dev`, `skillkit-tdd` |
 | `skillkit-angular` | Skills `angular-conventions`, `ng-review`, `ng-explain`, `unit-test-angular`; agents `frontend-implementer`, `frontend-reviewer` | `aidd-dev`, `skillkit-tdd` |
 | `skillkit-bodyguard` | Mod: asks for confirmation before `rm -f/-r`, `git push --force`, `git reset --hard`, `DROP TABLE` | none |
@@ -34,6 +34,7 @@ Mods need a Claude Code build that supports them (see the `plugin-authoring` ski
 ```
 aidd-refine:01-brainstorm  ->  aidd-pm:04-spec  ->  aidd-dev:01-plan
         ->  skillkit-tdd:tdd  (per plan step, per layer: test-writer RED, implementer GREEN + REFACTOR, commit)
+        ->  skillkit-tdd:tdd-review  (is the branch built layer by layer?)
         ->  aidd-dev:05-review  +  skillkit-dotnet:ddd-review / skillkit-angular:ng-review
         ->  aidd-vcs:01-commit  (guard-commit requires a recent green run)
 ```
