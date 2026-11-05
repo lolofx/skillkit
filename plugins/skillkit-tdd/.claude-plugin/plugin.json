@@ -1,0 +1,8 @@
+{
+  "name": "skillkit-tdd",
+  "description": "Strict layer-by-layer TDD on top of AIDD (Domain, Application, API, Infrastructure, one commit per layer): a RED/GREEN/REFACTOR skill, a tdd-review skill that audits a branch commit by commit, a test-writer agent that never touches production code, and a commit gate that refuses a commit without a recent green test run.",
+  "author": {
+    "name": "lolofx"
+  },
+  "dependencies": ["aidd-dev@aidd-framework"]
+}
