@@ -36,5 +36,10 @@ for f in plugins/*/hooks/hooks.json; do
   [ -f "$f" ] && grep -q '"command"' "$f" && ! grep -q 'CLAUDE_PLUGIN_ROOT' "$f" && err "$f: command hook without CLAUDE_PLUGIN_ROOT"
 done
 
+# 7. Shell scripts are executable in git (skills and CI call them directly)
+while read -r mode _ _ f; do
+  [ "$mode" = "100755" ] || err "$f: shell script not executable (git update-index --chmod=+x)"
+done < <(git ls-files -s -- '*.sh')
+
 [ $fail -eq 0 ] && echo "repo checks OK"
 exit $fail
