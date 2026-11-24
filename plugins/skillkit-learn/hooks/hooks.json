@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash|Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"${CLAUDE_PLUGIN_ROOT}/hooks/capture.ps1\" || bash \"${CLAUDE_PLUGIN_ROOT}/hooks/capture.sh\""
+          }
+        ]
+      }
+    ]
+  }
+}
