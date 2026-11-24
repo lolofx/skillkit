@@ -31,6 +31,10 @@ else
       ([.[]|select(.type=="note")|"- [\(.kind)] \(.what) | \"\(.quote)\" | \(.skill)"]|if length==0 then ["(none)"] else . end)[]'
 fi
 
+echo; echo "## Lesson registry"
+reg="$(dirname "$0")/registry.sh"
+if [ -f .skillkit/lessons.json ]; then bash "$reg" due; else echo "(empty)"; fi
+
 echo; echo "## Branch vs $base"
 git rev-parse --git-dir >/dev/null 2>&1 || { echo "(not a git repository)"; exit 0; }
 range="$base..HEAD"; git rev-parse -q --verify "$base" >/dev/null || range="origin/$base..HEAD"

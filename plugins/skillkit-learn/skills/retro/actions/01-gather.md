@@ -7,7 +7,7 @@
    "${CLAUDE_PLUGIN_ROOT}/skills/retro/scripts/gather.sh" --all  # whole journal
    ```
 
-   It prints the journal summary (skills used, failed tests, repeated failing commands, `note` lines) and the branch commits and diffstat.
+   It prints the journal summary (skills used, failed tests, repeated failing commands, `note` lines), the lessons of the registry that are `DUE` or `INEFFECTIVE` (see 02), and the branch commits and diffstat.
 2. Read the conversation for what the journal cannot see: corrections and approvals you did not `note`, instructions that were ambiguous or missing.
 3. Signals worth a lesson:
    - a `correction` or `friction` note;
