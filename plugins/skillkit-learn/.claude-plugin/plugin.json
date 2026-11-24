@@ -1,0 +1,7 @@
+{
+  "name": "skillkit-learn",
+  "description": "Continuous improvement across all stacks: hooks record objective session signals (test runs, failing commands, skills used) into a per-session journal, and the note skill logs corrections and validated approaches, so an end-of-dev retro works from evidence instead of the conversation alone.",
+  "author": {
+    "name": "lolofx"
+  }
+}
